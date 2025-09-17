@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 //  Definimos el tipo de datos que maneja el formulario
-type ContactFormData = {
+export type ContactFormData = {
   name: string;
   email: string;
   company?: string;
@@ -74,7 +74,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSuccess }) => {
   //  Simulamos envío (aquí iría la llamada a tu API / servidor)
   const fakeSubmit = (data: ContactFormData) =>
     new Promise<void>((resolve, reject) => {
-      // Simulamos latencia de red
+      console.log('Enviando datos del formulario:', data);
       setTimeout(() => {
         // Simulamos éxito la mayoría de las veces
         if (Math.random() > 0.08) resolve();
@@ -115,6 +115,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSuccess }) => {
       // llamamos callback si existe
       onSuccess?.(form);
     } catch (err) {
+      console.error("Error enviando el formulario:", err);
       setError(
         "Hubo un error al enviar el formulario. Por favor intenta más tarde."
       );

@@ -1,12 +1,14 @@
 'use client';
 
 import ContactForm from './ContactForm';
+import type { ContactFormData } from "./ContactForm";
 
 //  Componente wrapper que contiene la sección completa de contacto
 //    - Contiene título, descripción, el formulario y los contenedores de estado
 export const ContactSection: React.FC = () => {
+  
   // Podemos pasar un callback al ContactForm si queremos reaccionar al envío exitoso
-  const handleSuccess = (data: any) => {
+  const handleSuccess = (data: ContactFormData) => {
     // Aquí podrías, por ejemplo, abrir un modal, enviar eventos a analytics, etc.
     console.log('Contacto enviado:', data);
   };

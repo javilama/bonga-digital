@@ -1,4 +1,6 @@
 
+import Image from "next/image";
+
 export type TeamMember = {
   id: string;        // clave única
   name: string;      // nombre completo
@@ -22,7 +24,7 @@ export const TeamCard: React.FC<{ member: TeamMember }> = ({ member }) => {
       data-testid={member.testId}
     >
       {/* Imagen redonda del miembro */}
-      <img
+      <Image
         src={member.imageUrl}
         alt={member.alt ?? `${member.name} - foto`}
         className="w-24 h-24 rounded-full mx-auto object-cover"

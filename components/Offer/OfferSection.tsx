@@ -1,7 +1,7 @@
 'use client';
 
 import OfferCard from "./OfferCard";
-import { IconCode, IconQA, IconConsulting, IconBug,IconItConsulting, IconPrinter } from "../../components/Services/icons";
+import { IconCode,IconBug,IconItConsulting, IconPrinter } from "../../components/Services/icons";
 import { IconSupport } from '../Services/icons';
 
 //  Tipo para los items que mostraremos

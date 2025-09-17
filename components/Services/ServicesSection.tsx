@@ -1,6 +1,6 @@
 'use client';
 import { ServiceCard } from "./ServiceCard";
-import { IconWeb, IconMobile, IconConsulting, IconBug, IconMobileApp,IconMenu,IconItConsulting,IconCode } from "./icons";
+import { IconWeb,IconBug, IconMobileApp,IconMenu,IconItConsulting,IconCode } from "./icons";
 
 export const ServicesSection: React.FC = () => {
   //  Definimos el arreglo de servicios
