@@ -34,3 +34,45 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Como funciona el carrusel:
+
+┌─────────────────────────┐
+│      slideData.ts       │
+│  (arreglo de slides)    │
+└─────────────┬───────────┘
+              │ importa
+              ▼
+┌─────────────────────────┐
+│       Slide.tsx         │
+│  - Recibe un SlideItem  │
+│  - Renderiza imagen,    │
+│    título, subtítulo y  │
+│    CTA                  │
+└─────────────┬───────────┘
+              │ usado por
+              ▼
+┌─────────────────────────┐
+│      Carousel.tsx       │
+│  - Recibe arreglo de    │
+│    SlideItem            │
+│  - Controla index,      │
+│    autoplay, swipe      │
+│  - Renderiza <Slide />  │
+└─────────────┬───────────┘
+              │ puede envolver
+              ▼
+┌─────────────────────────┐
+│  CarouselWrapper.tsx    │
+│  - Aplica layout/styling│
+│  - Reutilizable en pages│
+└─────────────┬───────────┘
+              │ exporta
+              ▼
+┌─────────────────────────┐
+│       index.ts          │
+│  - Re-exporta Carousel  │
+│    y tipos              │
+│  - Facilita imports en  │
+│    las páginas Next.js  │
+└─────────────────────────┘
