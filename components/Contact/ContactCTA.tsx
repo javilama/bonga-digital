@@ -24,7 +24,7 @@ export const ContactCTA: React.FC<ContactCTAProps> = ({
   return (
     <Link
       href={href}
-      className="bg-bonga-blue text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition"
+      className="bg-bonga-blue text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 transition"
       data-testid={testId}
       // target y rel permiten abrir en nueva pestaña de forma segura
       target={href.startsWith("http") ? "_blank" : undefined}

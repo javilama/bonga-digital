@@ -1,7 +1,11 @@
+
+
+
+
 import type { Metadata } from "next";
-//import Header from '../components/layout/Header';
 import {Header} from '../components/Header/Header';
 import Footer from '../components/layout/Footer';
+import { ScrollBar } from "@/components/ScrollProgress/ScrollBar";
 import "./globals.css";
 
 
@@ -18,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <ScrollBar />
         <Header />       
         {children}
         <Footer />
