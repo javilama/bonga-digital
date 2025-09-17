@@ -45,7 +45,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <Button
             testId="cta-secondary"
             label="Ver Portfolio"
-            href="/portfolio"
+            href="/products"
             variant="secondary"
           />
         </div>
