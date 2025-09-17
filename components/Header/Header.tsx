@@ -5,6 +5,7 @@ import { useState } from 'react';
 import NavLink from './NavLink';
 import MobileMenu from './MobileMenu';
 import { IconHamburguer } from '../Services/icons';
+import Link from 'next/link';
 
 // Definimos los elementos de navegación en un arreglo.
 // Así, si queremos añadir un nuevo item, solo modificamos este arreglo
@@ -24,14 +25,15 @@ export const Header: React.FC = () => {
     <header className="bg-bonga-blue text-white shadow-lg" data-testid="main-header">
       <nav className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
-          {/* LOGO: Parte izquierda del header con el nombre de la empresa */}
+          <Link href={'/'}>
+           {/* LOGO: Parte izquierda del header con el nombre de la empresa */}
           <div className="flex items-center space-x-2" data-testid="logo">
             <div className="w-10 h-10 bg-bonga-yellow rounded-full flex items-center justify-center">
               <span className="font-bold text-bonga-blue text-xl">BD</span>
             </div>
             <span className="text-xl font-bold">Bonga Digital</span>
           </div>
-
+          </Link>
           {/* MENÚ EN DESKTOP: visible solo en pantallas medianas (md) o más grandes */}
           <ul className="hidden md:flex space-x-6" data-testid="nav-menu">
             {navItems.map((item) => (

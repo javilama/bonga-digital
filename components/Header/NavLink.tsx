@@ -12,7 +12,7 @@ children: React.ReactNode;
 
 export const NavLink: React.FC<NavLinkProps> = ({ href, testId, children, ...rest }) => {
 return (
-<Link href={href ?? '#'} {...rest} className="hover:text-bonga-yellow transition-colors" data-testid={testId}>
+<Link href={href ?? '#'} {...rest} className=" font-semibold hover:text-bonga-yellow transition-colors" data-testid={testId}>
 {children}
 </Link>
 );

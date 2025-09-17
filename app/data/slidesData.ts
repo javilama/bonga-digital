@@ -33,7 +33,7 @@ export const slidesData: SlideItem[] = [
     ctaHref: '/services'
   },
   {
-    id: 'slide-3',
+    id: 'slide-4',
     imageSrc: 'https://images.unsplash.com/photo-1699892131416-ffe93f41e977?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjN8fHRlY25vbG9naWElMjBmb25kbyUyMG9zY3Vyb3xlbnwwfHwwfHx8MA%3D%3D',
     imageAlt: 'Iphone-mobile',
     title: 'Desarrollo movil <span class="text-bonga-yellow">IOs</span>',

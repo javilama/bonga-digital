@@ -35,7 +35,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
       {filters.map((filter, index) => {
         // Clases base compartidas por todos los botones
         const baseClasses =
-          'filter-btn px-6 py-2 border border-bonga-blue transition-colors w-[30%] md: w-auto text-center text-sm font-medium sm:text-base';
+          'filter-btn px-4 md:px-6 py-2 border border-bonga-blue transition-colors w-[30%] md: w-auto text-center text-sm font-medium sm:text-base';
 
         // Estilos condicionales según si el filtro está activo o no
         const activeClasses =

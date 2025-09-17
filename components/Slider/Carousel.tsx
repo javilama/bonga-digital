@@ -41,8 +41,12 @@ export const Carousel: React.FC<CarouselProps> = ({
   // autoplay
   useEffect(() => {
     clearTimer();
-    if (!isPlaying || slides.length <= 1) return;
+    // verificamos si estamos en mobile (anchura < 768px)
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <=768;
+    if (!isPlaying || slides.length <= 1 || isMobile) return;
+    // establecemos el timeout para pasar al siguiente slide
     timeoutRef.current = window.setTimeout(() => next(), interval);
+     // limpiamos el timeout al desmontar o cambiar dependencias
     return () => clearTimer();
   }, [isPlaying, index, interval, next, slides.length, clearTimer]);
 
@@ -57,17 +61,28 @@ export const Carousel: React.FC<CarouselProps> = ({
   }, [next, prev]);
 
   // swipe táctil
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
 
-    const onTouchStart = (e: TouchEvent) => { startXRef.current = e.touches[0].clientX; deltaXRef.current = 0; setIsPlaying(false); clearTimer(); };
-    const onTouchMove = (e: TouchEvent) => { if (startXRef.current === null) return; deltaXRef.current = e.touches[0].clientX - startXRef.current; };
+    const onTouchStart = (e: TouchEvent) => { startXRef.current = e.touches[0].clientX; deltaXRef.current = 0; setIsPlaying(false); clearTimer(); 
+
+      // pausamos autoplay en mobile
+    if (isMobile) setIsPlaying(false);
+
+    clearTimer();
+    };
+
+    const onTouchMove = (e: TouchEvent) => { if (startXRef.current === null) return; deltaXRef.current = e.touches[0].clientX - startXRef.current;};
+
     const onTouchEnd = () => { 
       const threshold = 50;
       if (deltaXRef.current > threshold) prev();
       else if (deltaXRef.current < -threshold) next();
       startXRef.current = null; deltaXRef.current = 0;
+      // en mobile no reanudamos autoplay automáticamente
+    if (!isMobile) setIsPlaying(true);
     };
 
     el.addEventListener('touchstart', onTouchStart, { passive: true });
@@ -90,7 +105,7 @@ export const Carousel: React.FC<CarouselProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`relative ${className}`}
+      className={`relative w-full overflow-hidden ${className}`}
       role="region"
       aria-roledescription="carousel"
       aria-label="Carrusel de imágenes"
@@ -109,10 +124,10 @@ export const Carousel: React.FC<CarouselProps> = ({
       {/* Flechas */}
       {showNav && slides.length > 1 && (
         <>
-          <button onClick={() => { setIsPlaying(false); prev(); }} className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 text-bonga-dark rounded-full p-2 shadow hover:bg-white" aria-label="Anterior">
+          <button onClick={() => { setIsPlaying(false); prev(); }} className="absolute left-5 top-1/2 -translate-y-1/2 bg-white/40 text-bonga-dark rounded-full p-2 shadow hover:bg-white hidden md:block" aria-label="Anterior">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
           </button>
-          <button onClick={() => { setIsPlaying(false); next(); }} className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 text-bonga-dark rounded-full p-2 shadow hover:bg-white" aria-label="Siguiente">
+          <button onClick={() => { setIsPlaying(false); next(); }} className="absolute right-5 top-1/2 -translate-y-1/2 bg-white/40 text-bonga-dark rounded-full p-2 shadow hover:bg-white hidden md:block" aria-label="Siguiente">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
           </button>
         </>
