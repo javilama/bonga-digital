@@ -285,7 +285,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSuccess }) => {
         <div className="text-center">
           <button
             type="submit"
-            className="bg-bonga-blue text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+            className="bg-bonga-blue cursor-pointer text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
             data-testid="submit-button"
             disabled={loading}
           >
