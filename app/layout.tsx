@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import {Header} from '../components/Header/Header';
 import Footer from '../components/layout/Footer';
 import { ScrollBar } from "@/components/ScrollProgress/ScrollBar";
+import FloatWhatsAppBtn from "@/components/UI/FloatWhatsAppBtn";
 import "./globals.css";
 
 
@@ -26,6 +27,7 @@ export default function RootLayout({
         <Header />       
         {children}
         <Footer />
+        <FloatWhatsAppBtn />
       </body>
     </html>
   );
